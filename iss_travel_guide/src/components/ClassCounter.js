@@ -6,18 +6,27 @@ class ClassCounter extends Component {
     this.state = {
       count: 0
     }
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
-  incrementCount() {
+  clickHandler() {
     this.setState({
       count: this.state.count + 1
     })
   }
 
+  componentDidMount() {
+    document.title = `Clicked ${this.state.count} times`
+  }
+
+  componentDidUpdate() {
+    document.title = `Clicked ${this.state.count} times`
+  }
+
   render() {
     return (
       <div>
-        <button onClick={() => this.incrementCount()}>Count: {this.state.count}</button>
+        <button onClick={this.clickHandler}>Click me!</button>
       </div>
     )
   }

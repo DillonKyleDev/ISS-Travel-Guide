@@ -2,15 +2,23 @@ import React, {useState} from 'react'
 
 function HookCounterArray() {
 
-  const [myArray, setArray] = useState([1,2,3,4]);
+  const [items, setItems] = useState([]);
+ 
+  const addItem = () => {
+    setItems( [...items, {
+      id: items.length,
+      value: Math.floor(Math.random() * 10) + 1
+    }])
+  }
 
   return (
     <div>
-      <h2>{myArray[0]}</h2>
-      <h2>{myArray[1]}</h2>
-      <h2>{myArray[2]}</h2>
-      <h2>{myArray[3]}</h2>
-      <button onClick={setArray()}>increment Array 1</button>
+      <button onClick={addItem}>Add a number</button>
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.value}</li>
+        ))}
+      </ul>
     </div>
   )
 }
