@@ -1,15 +1,10 @@
 import './App.css';
-import ClassCounter from './components/ClassCounter';
-import HookCounter from './components/HookCounter';
-import HookCounterArray from './components/HookCounterArray';
-import HookCounterTwo from './components/HookCounterTwo';
-import UseEffect from './components/UseEffect';
-
+import FetchISS from './components/FetchISS';
 
 function App() {
   return (
     <div className="App">
-      <UseEffect />
+      <FetchISS />
     </div>
   );
 }
