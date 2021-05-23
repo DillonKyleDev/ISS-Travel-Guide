@@ -3,9 +3,8 @@ import React from 'react'
 
 
 function SetMapView(props) {
-  const { map, lat, lon } = props;
-  map.setView([lat, lon]);
-
+  const { map } = props;
+  map.setView([map.getCenter().lat, map.getCenter().lng]);
   return (
     <div>
       

@@ -4,37 +4,40 @@ import './displayResults.css'
 
 function DisplayResults({ query }) {
  let formedList = 'Thinking...';
- console.log(query.results[0]);
  if(query.results !== 'null' && query.results !== undefined) {
-  formedList = query.results.map((locale, index) => 
-    <div key={locale.poi.name + index} className='locale'>
+  formedList = query.results.map(locale => 
+    <div key={locale.id} className='locale'>
       <ul>
+      
+      {locale.poi && locale.poi.name ?
+      <li><span className='liName'>Name:</span> 
+      <span className='liInfo'> {locale.poi.name}</span></li> 
+      : null} 
 
-      {locale.poi.name ? <li><span className='liName'>Name:</span> 
-      <span className='liInfo'> {locale.poi.name}</span></li> : null} 
-
-      {locale.address.streetName ? 
-      <li><span className='liName'>Street:</span>
+      {locale.address ? 
+      <li><span className='liName'>Location:</span>
         <ul id='address'>
-          <li><span className='liInfo'>{locale.address.streetName}</span></li>
-          <li><span className='liInfo'>{locale.address.countrySubdivision}, {locale.address.country}, {locale.address.postalCode}</span></li>
+          {locale.address.freeformAddress ? 
+          <li><span className='liInfo'>{locale.address.freeformAddress}</span></li> : null }
+          {locale.address.streetName ? 
+          <li><span className='liInfo'><span className='liName'>Street:</span> {locale.address.streetName}</span></li> : null }
+          {locale.address.countrySubdivision ?
+          <li><span className='liInfo'>{locale.address.countrySubdivision}, {locale.address.country}, {locale.address.postalCode}</span></li> : null }
         </ul> 
       </li>
       : null}
 
-      {locale.poi.phone ? 
+      {locale.poi && locale.poi.phone ? 
       <li><span className='liName'>Phone Number:</span> 
       <span className='liInfo'> {locale.poi.phone}</span></li>
       : null}
         
-      {locale.poi.url ? 
+      {locale.poi && locale.poi.url ? 
       <li><span className='liName'>Website:</span> 
       <span className='liInfo'> <a href={locale.poi.url}>{locale.poi.url}</a></span></li>
       : null}
-        {/*check if it has a poi and then perform that.
-        Do a check for every 'type' and display results for it.
-        */}
-      {locale.poi.categories.length > 0 ? 
+        
+      {locale.poi && locale.poi.categories.length > 0 ? 
       <li><span className='liName'>Tags:</span>  
       <span className='liInfo'>{
         locale.poi.categories.map((category, index) => 
@@ -48,6 +51,12 @@ function DisplayResults({ query }) {
         )
       }</span></li>
       : null}
+
+      {locale.type ? 
+      <li><span className='liName'>Location Type:</span>
+      <span className='liInfo'> {locale.type}</span></li> 
+      : null }
+
       </ul>
     </div>
  )} else {
