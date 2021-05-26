@@ -26,7 +26,6 @@ function FetchISS() {
     .then(results => results.json())
     .then(results => {
       setCoords({lat: results.latitude, lon: results.longitude})
-      console.log('fetched');
     }).catch(err => {
       console.log(err.message);
     });
@@ -42,16 +41,3 @@ function FetchISS() {
 }
 
 export default FetchISS
-
-/*
-  
-
-      const iss_API = 'https://api.wheretheiss.at/v1/satellites/25544';
-    fetch(iss_API)
-    .then(results => results.json())
-    .then(results => {
-      setCoords({lat: results.latitude, lon: results.longitude})
-    }).catch(err => {
-      console.log(err.message);
-    })
-*/

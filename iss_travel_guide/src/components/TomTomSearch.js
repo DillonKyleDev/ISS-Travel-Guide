@@ -21,6 +21,7 @@ function TomTomSearch(props) {
   const tomtom_API = `https://api.tomtom.com/search/2/search/${keyword}.json?typeahead=false&limit=12&ofs=0&lat=${coords.lat}&lon=${coords.lon}&radius=${tempRadius}&language=en-US&minFuzzyLevel=1&maxFuzzyLevel=2&key=ZO8TcaaYrxWNrZPmiTpIyKepTgr5yPqU`;
   fetch(tomtom_API)
   .then(coordQuery => {
+    console.log(coords.lat, coords.lon);
     if(coordQuery.ok) {
     return coordQuery.json();
     } else return([])
