@@ -1,31 +1,42 @@
-import { useState } from 'react'
+import React, {useState, useEffect} from 'react'
 import TomTomSearch from './TomTomSearch'
 import '../body.css'
 
 function FetchISS() {
-  const [ coords, setCoords] = useState({coords: [0,0]});
+  const [ coords, setCoords] = useState({lat: null, lon: null});
+  const [ effectCall, setEffectCall ] = useState(false);
+  
+  useEffect(
+    () => {
+      fetchISS();
+    }
+  ,[]);
+
+  useEffect(
+    () => {
+      setTimeout(() => {
+        fetchISS();
+      }, 3000);
+    }
+  , [effectCall]);
 
   function fetchISS() {
     const iss_API = 'https://api.wheretheiss.at/v1/satellites/25544';
     fetch(iss_API)
+    .then(results => results.json())
     .then(results => {
-      if(results.ok) {
-      return(results.json())
-      } else return({coords: [0,0]});
-    })
-    .then(results => {
-      setCoords({coords: [results.latitude, results.longitude]});
+      setCoords({lat: results.latitude, lon: results.longitude})
+      console.log('fetched');
     }).catch(err => {
       console.log(err.message);
-    })
+    });
+    setEffectCall(prev => !prev);
   }
-  
-  setTimeout(() => fetchISS(), 2000);
 
   return(
     <div>
-      { coords.coords[0] !== 0 && coords.coords[1] !== 0 ? 
-      <TomTomSearch coords={coords.coords} /> : null }       
+      { coords.lat !== null && coords.lon !== null ? 
+      <TomTomSearch coords={coords} /> : null } 
     </div>
   )
 }
@@ -33,5 +44,14 @@ function FetchISS() {
 export default FetchISS
 
 /*
+  
 
+      const iss_API = 'https://api.wheretheiss.at/v1/satellites/25544';
+    fetch(iss_API)
+    .then(results => results.json())
+    .then(results => {
+      setCoords({lat: results.latitude, lon: results.longitude})
+    }).catch(err => {
+      console.log(err.message);
+    })
 */

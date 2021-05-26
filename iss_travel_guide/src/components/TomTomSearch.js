@@ -10,26 +10,15 @@ function TomTomSearch(props) {
   const [ radius, setRadius ] = useState(1000);
   const [ keyword, setKeyword ] = useState('food');
   const [ query, setQuery ] = useState({results: 'null'});
-  const [ hasInitCoords, setBool ] = useState(false);
   let radios = document.getElementsByName('units');
 
-  if(!hasInitCoords) {
-    setBool(true);
-  }
-
-  useEffect(
-    () => {
-      getCoords();
-    }
-  ,[hasInitCoords]);
-  
   function getCoords() {
   let tempRadius = radius;
   if(radios[0].checked) {
     tempRadius = radius * 1609.34;     
   }
   //Fetch TomTom coordinate search endpoint
-  const tomtom_API = `https://api.tomtom.com/search/2/search/${keyword}.json?typeahead=false&limit=12&ofs=0&lat=${coords[0]}&lon=${coords[1]}&radius=${tempRadius}&language=en-US&minFuzzyLevel=1&maxFuzzyLevel=2&key=ZO8TcaaYrxWNrZPmiTpIyKepTgr5yPqU`;
+  const tomtom_API = `https://api.tomtom.com/search/2/search/${keyword}.json?typeahead=false&limit=12&ofs=0&lat=${coords.lat}&lon=${coords.lon}&radius=${tempRadius}&language=en-US&minFuzzyLevel=1&maxFuzzyLevel=2&key=ZO8TcaaYrxWNrZPmiTpIyKepTgr5yPqU`;
   fetch(tomtom_API)
   .then(coordQuery => {
     if(coordQuery.ok) {
@@ -40,10 +29,16 @@ function TomTomSearch(props) {
     if(queryTemp.results.length !== 0) {
       setQuery(queryTemp);
     } else {
-      setQuery({results: 'null'});
+      setQuery({results: 'nothing'});
       }
     })
   }
+
+  useEffect(
+    () => {
+      getCoords();
+    }
+  , []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function changeRadius(e) {
     setRadius(e.target.value);
@@ -55,7 +50,7 @@ function TomTomSearch(props) {
   return (
     <div>
       <TitleText />
-      <DrawMap lat={coords[0]} lon={coords[1]} query={query}/>
+      <DrawMap lat={coords.lat} lon={coords.lon} query={query}/>
       <DisplaySearchMenu 
       changeRadius={e => changeRadius(e)}
       changeKeyword={e => changeKeyword(e)}

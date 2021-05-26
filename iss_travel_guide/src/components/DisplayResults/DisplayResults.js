@@ -4,7 +4,7 @@ import './displayResults.css'
 
 function DisplayResults({ query }) {
  let formedList = 'Thinking...';
- if(query.results !== 'null' && query.results !== undefined) {
+ if(query.results !== 'null' && query.results !== 'nothing' && query.results !== undefined) {
   formedList = query.results.map(locale => 
     <div key={locale.id} className='locale'>
       <ul>
@@ -59,20 +59,32 @@ function DisplayResults({ query }) {
 
       </ul>
     </div>
- )} else {
-   formedList = 
-   <div className='locale'>
-     <ul>
-       <li>
-         <span className='liName'>The ISS couldn't find anything close by.</span>
-         <br />
-         Try increasing the search radius or changing
-         the keyword.
-       </li>
+ )} else if (query.results === 'null') {
+    formedList = 
+    <div className='locale'>
+      <ul>
+        <li>
+          <span className='liName'>Loading...</span>
+          <br />
+          Please wait...
+        </li>
 
-     </ul>
-   </div>
- }
+      </ul>
+    </div>
+    } else {
+    formedList = 
+      <div className='locale'>
+        <ul>
+          <li>
+            <span className='liName'>The ISS couldn't find anything close by.</span>
+            <br />
+            Try increasing the search radius or changing
+            the keyword.
+          </li>
+
+        </ul>
+      </div>
+    }
 
   return (
     <div>

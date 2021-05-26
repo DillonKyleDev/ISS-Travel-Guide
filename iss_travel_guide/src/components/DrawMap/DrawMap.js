@@ -10,7 +10,7 @@ function DrawMap(props) {
   let mapContainer;
   let queryIsNull = true;
 
-  if(query.results !== 'null') {
+  if(query.results !== 'null' && query.results !== 'nothing') {
     queryIsNull = false;
   }
   //Custom Icon
