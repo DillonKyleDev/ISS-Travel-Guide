@@ -1,0 +1,50 @@
+#searchBox {
+  background-color: #f1efe9;
+  box-shadow: 0px 1px 3px 0px rgb(143, 143, 143);
+  margin: 20px;
+  padding: 10px;
+}
+
+#latLon {
+  margin: 15px 10%;
+  margin-top: 5px;
+  padding-bottom: 10px;
+  border-bottom: solid #0c5baf 1px;
+}
+#latLon p {
+  margin: 5px;
+  margin-left:auto;
+  margin-right: auto;
+  width: max-content;
+}
+#searchBox .input input {
+  width: 80px;
+  border: none;
+  color: #0c5baf;
+  font-size: 1rem;
+  padding: 2px 5px;
+}
+
+#inputsDiv {
+  margin: 5px;
+}
+.input {
+  margin-bottom: 5px;
+}
+
+#radios {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  text-align: center;
+}
+
+#searchBox button {
+  border: none;
+  border-radius: 3px;
+  background-color: #0c5baf;
+  color: white;
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
