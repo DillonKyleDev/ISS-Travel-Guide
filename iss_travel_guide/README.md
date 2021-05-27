@@ -1,70 +1,76 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The Unofficial ISS Travel Guide ##
 
-## Available Scripts
+This project was started with the idea of mastering APIs and React hooks in mind.  It started as a simple project that would display the location of the International Space Station on a map in real time.
 
-In the project directory, you can run:
+## Important Note: ##
+  This project takes inspiration from a Coding Train Youtube video seriesthat uses the same concept of creating a map to illustrate the ISS orbit path.  That video, however, only used vanilla Javascript, not React, and finishes after getting the ISS to track on a map.
+  --Video linked at the bottom of the ReadMe.--
+------------------------------------------------------------------
 
-### `npm start`
+After getting the project to that point though, I felt it needed an interactive element, so I started thinking of clever ways to take this project a step further.  Enter reverse geocoding!
+I had the idea to use reverse geocoding, (which I had yet to discover the name of), to plunk in some coordinates and get some nearby locations back.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This application uses three different APIs to achieve all of its goals, although two would have been sufficient!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Firstly, the 
 
-### `npm test`
+## FetchISS.js ##
+React component uses the API provided by https://wheretheiss.at/ to fetch the current coordinates of the International Space station.  It then sends that information to its child component,
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## TomTomSearch.js ##,
+ which takes advantage of another API, the TomTom map/search API, to perform what is called a "Fuzzy search" for locations in a given ##radius## that share a common ##keyword##.
 
-### `npm run build`
+For more information on the specific search used by the TomTom API you can visit their websites developer section here:
+https://developer.tomtom.com/content/search-api-explorer#/Search/get_search__versionNumber__search__query___ext_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+And for IBMs explanation of what a fuzzy search is exactly, you can go here:
+https://www.ibm.com/docs/en/informix-servers/14.10?topic=modifiers-fuzzy-searches
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+After the TomTomSearch.js component fetches an array of locations with distinctive information, it sends the array with all of the location information to a few other components:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+First, the
+## DrawMap.js ##
+component.  This component fetches from the Leaflet API to draw a map with current ISS coordinates as its center point.  
+More information on the Leaflet library can be found here: https://leafletjs.com/
 
-### `npm run eject`
+This map includes the location of the ISS specifically, as well as twelve markers, one for each location returned from the TomTomSearch API call.
+Every time the coordinates are updated, which is every three seconds, in this case, the ISS map and marker positions are redrawn, but the ISS marker is the only marker who's position changes at that interval; 
+the rest of the markers position states are fixed until a new search is submitted from the second component TomTomSearch sends data to, the
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## DisplaySearchMenu.js ##
+component.  This component provides the means for user interaction! How exciting! It provides a few input fields:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Units to be used
+-Search radius desired
+-Keyword to search for
+-And the all-powerful 'Submit' button
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Users enter data into the fields and as you might expect, when the submit button is pressed, the current coordinates of the ISS are used in a brand new fuzzy TomTomSearch to locate locations nearby those coordinates.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+But I'm getting ahead of myself!  When the application is first loaded, a call to the TomTom API is made with the initail coordinates of the ISS in order to populate the page with results immediately.  Then, at any point, the user may start a new search by either entering new information, or by simply reclicking the Submit button.
 
-## Learn More
+And where does all of this search information go, you ask?  How does the user recieve this information?  Well that is the sole responsibility of a the last component our TomTomSearch.js sends information to, the:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## DisplayResults.js ##
+Component.  This component recieves the entire TomTomSearch.js query json and conditionally (if it exists) displays all relevant information in the form of content cards.  Included information includes (if a particular location has them):
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Name
+Street Name
+Free-form-address
+Country Subdivision
+Phone Number
+Website Url
+All Categories Listed
+Location Type, ie. 'POI' or 'Point of Interest', 'Geography', 'Street'
 
-### Code Splitting
+## Challenges Faced ##
+This project was a great teacher of React component structure, React Hooks, and API utilization.  Although the process of implementing my desired features generally went well, I admittedly faced some difficulties when it came to React hooks, specifically the useEffect hook and the three second timing interval I was implementing in the application.  My React knowledge is still developing, so I was still wrapping my head around the component lifecycle method and what role hooks play in that lifecycle.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+It took a LOT of trial and error and research to eventually figure out how to properly implement a timer in React without creating an infinite loop.  That was far and away my largest challenge I faced while writing this application.  And I walked away with a much better understanding of the React component lifecycle and how useEffect and useState are used in tandem to create dynamic and intelligent component logic.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-----------------------------------------------------------------
+Thank you to Dan at The Coding Train for the inspiration for this application.  He has a fantastic channel on Youtube and somehow makes learning coding concepts even more enjoyable!
+## Coding Train Youtube API Series ##
+https://www.youtube.com/watch?v=uxf0--uiX0I&list=RDCMUCvjgXvBlbQiydffZU7m1_aw&start_radio=1&rv=uxf0--uiX0I&t=4&ab_channel=TheCodingTrain
