@@ -1,12 +1,12 @@
 
 ## The Unofficial ISS Travel Guide ##
-
+##
 This project was started with the idea of mastering APIs and React hooks in mind.  It started as a simple project that would display the location of the International Space Station on a map in real time.
+-------------------------------------------------------
 
 ## Important Note: ##
-  This project takes inspiration from a Coding Train Youtube video seriesthat uses the same concept of creating a map to illustrate the ISS orbit path.  That video, however, only used vanilla Javascript, not React, and finishes after getting the ISS to track on a map.
+  This project takes inspiration from a Coding Train Youtube video series that uses the same concept of creating a map to illustrate the ISS orbit path.  That video, however, only used vanilla Javascript, not React, and finishes after getting the ISS to track on a map.
   --Video linked at the bottom of the ReadMe.--
-------------------------------------------------------------------
 
 After getting the project to that point though, I felt it needed an interactive element, so I started thinking of clever ways to take this project a step further.  Enter reverse geocoding!
 I had the idea to use reverse geocoding, (which I had yet to discover the name of), to plunk in some coordinates and get some nearby locations back.
