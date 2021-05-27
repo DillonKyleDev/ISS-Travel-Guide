@@ -21,7 +21,7 @@ Let's get into the components!  Firstly, the
 React component uses the API provided by https://wheretheiss.at/ to fetch the current coordinates of the International Space station every three seconds.  It then sends that information to its child component,
 
 ## TomTomSearch.js ##
- which takes advantage of another API, the TomTom map/search API, to perform what is called a "Fuzzy search" for locations in a given ##radius## that share a common ##keyword##.
+ which takes advantage of another API, the TomTom map/search API, to perform what is called a "Fuzzy search" for locations in a given *radius* that share a common *keyword*.
 
 For more information on the specific search used by the TomTom API you can visit their websites developer section here:
 https://developer.tomtom.com/content/search-api-explorer#/Search/get_search__versionNumber__search__query___ext_
