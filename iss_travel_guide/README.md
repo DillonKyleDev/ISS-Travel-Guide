@@ -6,7 +6,7 @@ This project was started with the idea of mastering APIs and React hooks in mind
 "An unofficial travel guide that lets you follow the International Space Station on its journey around the world! Visit all the places it's likely to recommend! *wink*"
 -------------------------------------------------------
 ## A little more context ##
-After getting the project to that point though, I felt it needed an interactive element, so I started thinking of clever ways to take this project a step further.  Enter reverse geocoding!
+After getting the project to the initial idea, I felt it needed an interactive element, so I started thinking of clever ways to take this project a step further.  Enter reverse geocoding!
 I had the idea to use reverse geocoding, (which I had yet to discover the name of), to plunk in some coordinates and get some nearby locations back.
 
 This application uses three different APIs to achieve all of its goals, although two would have been sufficient!
@@ -15,12 +15,12 @@ This application uses three different APIs to achieve all of its goals, although
   This project takes inspiration from a Coding Train Youtube video series that uses the same concept of creating a map to illustrate the ISS orbit path.  That video, however, only used vanilla Javascript, not React, and finishes after getting the ISS to track on a map.
   --Video linked at the bottom of the ReadMe.--
 
-Let's get into the components.  Firstly, the 
+Let's get into the components!  Firstly, the 
 
 ## FetchISS.js ##
 React component uses the API provided by https://wheretheiss.at/ to fetch the current coordinates of the International Space station.  It then sends that information to its child component,
 
-## TomTomSearch.js ##,
+## TomTomSearch.js ##
  which takes advantage of another API, the TomTom map/search API, to perform what is called a "Fuzzy search" for locations in a given ##radius## that share a common ##keyword##.
 
 For more information on the specific search used by the TomTom API you can visit their websites developer section here:
