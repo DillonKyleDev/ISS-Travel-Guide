@@ -2,12 +2,15 @@ import React from 'react'
 import './displaySearchMenu.css'
 
 function DisplaySearchMenu(props) {
-  const {changeRadius, changeKeyword, getCoords, radius, keyword} = props;
+  const {changeRadius, changeKeyword, getCoords, radius, keyword, lat, lon} = props;
   
   return (
     <div>
       <div id='searchBox'>
-
+        <div id='latLon'>
+          <p>Latitude: {lat}</p>
+          <p>Longitude: {lon}</p>
+        </div>
         <div id='radios'>
           <input type='radio' name='units' value='Miles' defaultChecked></input>
           <label>Miles</label>

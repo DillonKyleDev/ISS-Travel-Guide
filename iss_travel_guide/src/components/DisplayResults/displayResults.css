@@ -15,12 +15,17 @@
 }
 
 .locale {
-  box-shadow: 0px 3px 10px -1px rgb(61, 61, 61);
+  box-shadow: 0px 1px 5px -1px rgb(61, 61, 61);
   background-color: rgb(0,0,0,.175);
   border-radius: 5px;
   margin: 20px 10px;
   padding: 5px 20px;
   line-height: 1.2;
+  transition-property: box-shadow;
+  transition-duration: .2s;
+}
+.locale:hover {
+  box-shadow: 0px 3px 15px -1px rgb(61, 61, 61);
 }
 .locale li { 
   background-color: rgb(255,255,255,.3);
