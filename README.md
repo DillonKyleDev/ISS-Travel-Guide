@@ -18,7 +18,7 @@ This application uses three different APIs to achieve all of its goals, although
 Let's get into the components!  Firstly, the 
 
 ## FetchISS.js ##
-React component uses the API provided by https://wheretheiss.at/ to fetch the current coordinates of the International Space station.  It then sends that information to its child component,
+React component uses the API provided by https://wheretheiss.at/ to fetch the current coordinates of the International Space station every three seconds.  It then sends that information to its child component,
 
 ## TomTomSearch.js ##
  which takes advantage of another API, the TomTom map/search API, to perform what is called a "Fuzzy search" for locations in a given ##radius## that share a common ##keyword##.
