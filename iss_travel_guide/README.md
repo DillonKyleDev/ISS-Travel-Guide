@@ -1,7 +1,9 @@
 
 ## The Unofficial ISS Travel Guide ##
 ##
-This project was started with the idea of mastering APIs and React hooks in mind.  It started as a simple project that would display the location of the International Space Station on a map in real time.
+This project was started with the idea of mastering APIs and React hooks in mind.  It started as a simple project that would display the location of the International Space Station on a map in real time, but turned into:
+
+"An unofficial travel guide that lets you follow the International Space Station on its journey around the world! Visit all the places it's likely to recommend! *wink*"
 -------------------------------------------------------
 ## A little more context ##
 After getting the project to that point though, I felt it needed an interactive element, so I started thinking of clever ways to take this project a step further.  Enter reverse geocoding!
