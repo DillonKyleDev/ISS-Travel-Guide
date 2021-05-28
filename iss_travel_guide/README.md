@@ -31,14 +31,15 @@ https://www.ibm.com/docs/en/informix-servers/14.10?topic=modifiers-fuzzy-searche
 
 After the TomTomSearch.js component fetches an array of locations with distinctive information, it sends the array with all of the location information to a few other components:
 
-First, the
+First, the:
 ## DrawMap.js ##
 component.  This component fetches from the Leaflet API to draw a map with current ISS coordinates as its center point.  
 More information on the Leaflet library can be found here: https://leafletjs.com/
 
 This map includes the location of the ISS specifically, as well as twelve markers, one for each location returned from the TomTomSearch API call.
-Every time the coordinates are updated, which is every three seconds, in this case, the ISS map and marker positions are redrawn, but the ISS marker is the only marker who's position changes at that interval; 
-the rest of the markers position states are fixed until a new search is submitted from the second component TomTomSearch sends data to, the
+Every time the coordinates are updated, which is every three seconds, in this case, the ISS map and marker positions are redrawn, but the ISS marker is the only marker who's position changes at that interval.
+Another feature of the markers and the Leaflet library is the Popup component that is included.  These are attached to the Markers and the user can click on them to display relevant information about each location (after the information has been written in, of course).
+Although the ISS marker updates every three seconds, the rest of the markers position states are fixed until a new search is submitted from the second component TomTomSearch sends data to, the:
 
 ## DisplaySearchMenu.js ##
 component.  This component provides the means for user interaction! How exciting! It provides a few input fields:
