@@ -34,7 +34,7 @@ function DisplayResults({ query }) {
         
       {locale.poi && locale.poi.url ? 
       <li><span className='liName'>Website:</span> 
-      <span className='liInfo'> <a href={locale.poi.url}>{locale.poi.url}</a></span></li>
+      <span className='liInfo'> <a href={locale.poi.url} target="_blank">{locale.poi.url}</a></span></li>
       : null}
         
       {locale.poi && locale.poi.categories.length > 0 ? 
