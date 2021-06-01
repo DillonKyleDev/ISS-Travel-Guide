@@ -1,0 +1,8 @@
+body {
+  background-color: rgb(233, 233, 233);
+  font-family: Arial, Helvetica, sans-serif;
+  color: #0c5baf;
+  min-width: min-content;
+  width: 100%;
+  overflow-x: hidden;
+}
