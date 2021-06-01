@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ISS-Travel-Guide/static/css/main.bb0ad265.chunk.css",
+    "main.js": "/ISS-Travel-Guide/static/js/main.9e34b5c3.chunk.js",
+    "main.js.map": "/ISS-Travel-Guide/static/js/main.9e34b5c3.chunk.js.map",
+    "runtime-main.js": "/ISS-Travel-Guide/static/js/runtime-main.bdbc706e.js",
+    "runtime-main.js.map": "/ISS-Travel-Guide/static/js/runtime-main.bdbc706e.js.map",
+    "static/js/2.bce7b427.chunk.js": "/ISS-Travel-Guide/static/js/2.bce7b427.chunk.js",
+    "static/js/2.bce7b427.chunk.js.map": "/ISS-Travel-Guide/static/js/2.bce7b427.chunk.js.map",
+    "static/js/3.90d170a7.chunk.js": "/ISS-Travel-Guide/static/js/3.90d170a7.chunk.js",
+    "static/js/3.90d170a7.chunk.js.map": "/ISS-Travel-Guide/static/js/3.90d170a7.chunk.js.map",
+    "index.html": "/ISS-Travel-Guide/index.html",
+    "static/css/main.bb0ad265.chunk.css.map": "/ISS-Travel-Guide/static/css/main.bb0ad265.chunk.css.map",
+    "static/js/2.bce7b427.chunk.js.LICENSE.txt": "/ISS-Travel-Guide/static/js/2.bce7b427.chunk.js.LICENSE.txt",
+    "static/media/satellite.9edcbbb1.png": "/ISS-Travel-Guide/static/media/satellite.9edcbbb1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bdbc706e.js",
+    "static/js/2.bce7b427.chunk.js",
+    "static/css/main.bb0ad265.chunk.css",
+    "static/js/main.9e34b5c3.chunk.js"
+  ]
+}
